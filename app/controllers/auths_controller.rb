@@ -1,4 +1,4 @@
-class AuthsControllerController < ApplicationController
+class AuthsController < ApplicationController
   def create
     token_command = AuthenticateUserCommand.call(*params.slice(:user, :password).values)
 
