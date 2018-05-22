@@ -21,3 +21,4 @@ end
 
 gem 'bcrypt'
 gem 'jwt', '~> 2.1'
+gem 'rack-cors', '~> 1.0', '>= 1.0.2'
