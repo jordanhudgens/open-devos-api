@@ -20,3 +20,4 @@ group :development do
 end
 
 gem 'bcrypt'
+gem 'jwt', '~> 2.1'
