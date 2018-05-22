@@ -20,7 +20,7 @@ class AuthenticateUserCommand < BaseCommand
     if password_valid?
       @result = JwtService.encode(contents)
     else
-      errors.add(:base, I18n.t('authenticate_user_command.invalid_credentials'))
+      errors.add(:base, 'User credentials invalid')
     end
   end
 
