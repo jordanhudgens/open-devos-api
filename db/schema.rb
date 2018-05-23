@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_22_181924) do
+ActiveRecord::Schema.define(version: 2018_05_23_161045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "devos", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.text "content"
+    t.integer "position"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_devos_on_user_id"
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string "title"
@@ -29,4 +40,5 @@ ActiveRecord::Schema.define(version: 2018_05_22_181924) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "devos", "users"
 end
