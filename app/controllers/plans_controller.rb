@@ -11,6 +11,10 @@ class PlansController < ApplicationController
     render json: @plan
   end
 
+  def user_plans
+    render json: Topic.all
+  end
+
   def create
     @plan = Plan.new(plan_params)
 
@@ -34,6 +38,11 @@ class PlansController < ApplicationController
   end
 
   private
+
+    def set_topic
+      # TODO
+    end
+
     def set_plan
       @plan = Plan.find(params[:id])
     end
