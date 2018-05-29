@@ -1,6 +1,5 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :update, :destroy]
-  skip_before_action :verify_authenticity_token
 
   def index
     @plans = Plan.all
