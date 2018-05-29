@@ -22,3 +22,4 @@ end
 gem 'bcrypt'
 gem 'jwt', '~> 2.1'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
+gem 'active_model_serializers', '~> 0.10.7'
