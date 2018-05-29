@@ -12,6 +12,7 @@ class PlansController < ApplicationController
   end
 
   def user_plans
+    puts "X" * 500, params.inspect
     render json: Topic.all
   end
 
