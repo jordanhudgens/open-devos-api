@@ -44,7 +44,7 @@ class PlansController < ApplicationController
     end
 
     def set_plan
-      @plan = Plan.find(params[:id])
+      @plan = Plan.friendly.find(params[:id])
     end
 
     def plan_params
