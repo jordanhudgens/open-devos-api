@@ -44,7 +44,8 @@ class DevosController < ApplicationController
         :title,
         :content,
         :position,
-        :status
+        :status,
+        :plan_id
       )
     end
 end
