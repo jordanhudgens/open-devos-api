@@ -1,5 +1,6 @@
 class DevosController < ApplicationController
   before_action :set_devo, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user, only: [:index, :show]
 
   def index
     @devos = Devo.all
@@ -35,7 +36,7 @@ class DevosController < ApplicationController
 
   private
     def set_devo
-      @devo = Devo.find(params[:id])
+      @devo = Devo.friendly.find(params[:id])
     end
 
     def devo_params
