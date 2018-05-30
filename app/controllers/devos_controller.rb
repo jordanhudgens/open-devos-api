@@ -31,6 +31,7 @@ class DevosController < ApplicationController
   end
 
   def destroy
+    puts "X" * 500, @devo.inspect
     @devo.destroy
   end
 
