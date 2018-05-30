@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user, only: [:index, :show]
 
   def index
     @plans = Plan.all
