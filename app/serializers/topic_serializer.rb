@@ -1,5 +1,5 @@
 class TopicSerializer < ActiveModel::Serializer
-  attributes :title, :slug
+  attributes :id, :title, :slug
 
   has_many :plans
 end
