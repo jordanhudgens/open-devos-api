@@ -1,5 +1,4 @@
 class DevosController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
   before_action :set_devo, only: [:show, :update, :destroy]
   skip_before_action :authenticate_user, only: [:index, :show]
 
@@ -14,7 +13,6 @@ class DevosController < ApplicationController
   end
 
   def create
-    devo_params['content'] = sanitize devo_params['content']
     @devo = Devo.new(devo_params)
 
     if @devo.save
