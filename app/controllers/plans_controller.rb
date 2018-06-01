@@ -53,7 +53,8 @@ class PlansController < ApplicationController
         :title,
         :user_id,
         :topic_id,
-        :status
+        :status,
+        :summary
       )
     end
 end

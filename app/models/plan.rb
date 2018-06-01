@@ -5,5 +5,8 @@ class Plan < ApplicationRecord
   belongs_to :topic
   has_many :devos, dependent: :destroy
 
-  validates_presence_of :title, :user_id, :topic_id
+  validates_presence_of :title,
+                        :user_id,
+                        :topic_id,
+                        :summary
 end
