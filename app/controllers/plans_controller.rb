@@ -27,6 +27,8 @@ class PlansController < ApplicationController
   end
 
   def update
+    authorize @plan
+
     if @plan.update(plan_params)
       render json: @plan
     else
