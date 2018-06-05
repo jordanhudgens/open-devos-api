@@ -23,6 +23,8 @@ class DevosController < ApplicationController
   end
 
   def update
+    authorize @devo
+
     if @devo.update(devo_params)
       render json: @devo
     else
