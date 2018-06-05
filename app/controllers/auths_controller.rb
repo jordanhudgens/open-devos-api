@@ -4,14 +4,11 @@ class AuthsController < ApplicationController
   def register
     email, password, password_confirmation = params.slice(:user, :password, :password_confirmation).values
 
-    puts "Y" * 500, email, password, password_confirmation
     user = User.create!(
       email: email,
       password: password,
       password_confirmation: password_confirmation,
     )
-
-    puts "Z" * 500, user.inspect
 
     if user
       token_command = AuthenticateUserCommand.call(user.email, user.password)
