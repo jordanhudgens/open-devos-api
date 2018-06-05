@@ -15,6 +15,8 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
 
+    authorize @topic
+
     if @topic.save
       render json: @topic, status: :created, location: @topic
     else
@@ -23,6 +25,7 @@ class TopicsController < ApplicationController
   end
 
   def update
+    authorize @topic
     if @topic.update(topic_params)
       render json: @topic
     else
@@ -31,6 +34,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
+    authorize @topic
     @topic.destroy
   end
 
