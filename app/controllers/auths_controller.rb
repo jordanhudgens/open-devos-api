@@ -2,11 +2,13 @@ class AuthsController < ApplicationController
   skip_before_action :authenticate_user
 
   def register
-    puts "Y" * 500, params.inspect
+    email, password, password_confirmation = params.slice(:user, :password, :password_confirmation).values
+
+    puts "Y" * 500, email, password, password_confirmation
     user = User.create!(
-      email: params.slice(:user),
-      password: params.slice(:password),
-      password_confirmation: params.slice(:password_confirmation)
+      email: email
+      password: password
+      password_confirmation: password_confirmation
     )
 
     puts "Z" * 500, user.inspect
