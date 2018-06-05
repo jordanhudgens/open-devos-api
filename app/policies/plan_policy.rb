@@ -9,4 +9,8 @@ class PlanPolicy
   def update?
     plan.user == user
   end
+
+  def destroy?
+    update?
+  end
 end

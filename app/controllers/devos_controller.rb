@@ -33,6 +33,7 @@ class DevosController < ApplicationController
   end
 
   def destroy
+    authorize @devo
     @devo.destroy
   end
 

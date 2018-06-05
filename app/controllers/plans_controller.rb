@@ -37,6 +37,7 @@ class PlansController < ApplicationController
   end
 
   def destroy
+    authorize @plan
     @plan.destroy
   end
 

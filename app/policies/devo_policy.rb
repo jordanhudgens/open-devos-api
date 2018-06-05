@@ -9,4 +9,8 @@ class DevoPolicy
   def update?
     devo.plan.user == user
   end
+
+  def destroy?
+    update?
+  end
 end
