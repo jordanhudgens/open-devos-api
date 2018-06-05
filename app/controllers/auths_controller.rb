@@ -6,9 +6,9 @@ class AuthsController < ApplicationController
 
     puts "Y" * 500, email, password, password_confirmation
     user = User.create!(
-      email: email
-      password: password
-      password_confirmation: password_confirmation
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
     )
 
     puts "Z" * 500, user.inspect
