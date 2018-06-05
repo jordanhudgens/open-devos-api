@@ -1,5 +1,5 @@
 class DevoPolicy
-  attr_reader :user, :plan
+  attr_reader :user, :devo
 
   def initialize(user, devo)
     @user = user
