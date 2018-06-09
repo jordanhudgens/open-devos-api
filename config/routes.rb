@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'user-plans', to: 'plans#user_plans'
   resources :devos
   resources :topics
+  get 'search' to: 'search#search'
   post :login, to: 'auths#login'
   post :register, to: 'auths#register'
 end
