@@ -1,4 +1,14 @@
 class Devo < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_by_term, against: [:title, :content],
+    using: {
+      tsearch: {
+        any_word: true,
+        prefix: true
+      }
+    }
+
+
   extend FriendlyId
   friendly_id :title, use: :slugged
   belongs_to :plan
