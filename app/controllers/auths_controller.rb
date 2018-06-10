@@ -2,12 +2,13 @@ class AuthsController < ApplicationController
   skip_before_action :authenticate_user
 
   def register
-    email, password, password_confirmation = params.slice(:user, :password, :password_confirmation).values
+    email, password, password_confirmation, profile_slug = params.slice(:user, :password, :password_confirmation, :profile_slug).values
 
     user = User.create!(
       email: email,
       password: password,
       password_confirmation: password_confirmation,
+      profile_slug: profile_slug
     )
 
     if user
