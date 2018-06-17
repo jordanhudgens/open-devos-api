@@ -19,4 +19,8 @@ class Devo < ApplicationRecord
   }
 
   validates_presence_of :title, :content, :position, :plan_id
+
+  def last_published
+    self.updated_at
+  end
 end
