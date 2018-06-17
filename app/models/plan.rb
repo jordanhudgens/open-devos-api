@@ -14,4 +14,10 @@ class Plan < ApplicationRecord
                         :user_id,
                         :topic_id,
                         :summary
+
+  def last_published
+    if self.devos.any?
+      self.devos.order('updated_at desc').first.updated_at
+    end
+  end
 end
