@@ -49,7 +49,7 @@ class DevosController < ApplicationController
         :position,
         :status,
         :plan_id,
-        :featured_image
+        :devo_image
       )
     end
 end
