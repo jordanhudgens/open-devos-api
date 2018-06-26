@@ -5,5 +5,6 @@ class DevoSerializer < ActiveModel::Serializer
              :position,
              :status,
              :slug,
-             :last_published
+             :last_published,
+             :featured_image
 end
