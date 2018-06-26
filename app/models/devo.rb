@@ -8,6 +8,7 @@ class Devo < ApplicationRecord
       }
     }
 
+  has_one_attached :featured_image
 
   extend FriendlyId
   friendly_id :title, use: :slugged
