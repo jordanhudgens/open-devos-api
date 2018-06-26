@@ -26,3 +26,4 @@ gem 'active_model_serializers', '~> 0.10.7'
 gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'pundit', '~> 1.1'
 gem 'pg_search', '~> 2.1', '>= 2.1.2'
+gem "aws-sdk-s3", require: false
