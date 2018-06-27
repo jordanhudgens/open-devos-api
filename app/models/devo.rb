@@ -24,4 +24,8 @@ class Devo < ApplicationRecord
   def last_published
     self.updated_at
   end
+
+  def featured_image
+    self.devo_image.attachment.service_url
+  end
 end
