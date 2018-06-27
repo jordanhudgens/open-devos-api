@@ -26,7 +26,7 @@ class Devo < ApplicationRecord
   end
 
   def featured_image
-    if self.devo_image.attachment?
+    if self.devo_image
       self.devo_image.attachment.service_url
     end
   end
