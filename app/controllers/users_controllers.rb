@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   def profile
     user = User.find_by_slug(params[:user_slug])
 
-    puts "U" * 500, params.inspect, "U" * 500
-
     if user
       @plans = user.plans
       render json: @plans
