@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user
 
   def profile
-    user = User.find_by_slug(params[:user_id])
+    user = User.find_by_slug(params[:user_slug])
 
     puts "U" * 500, params.inspect, "U" * 500
 
