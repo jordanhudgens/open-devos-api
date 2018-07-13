@@ -6,5 +6,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   has_many :plans, dependent: :destroy
 
+  has_many :plan_assignments, dependent: :destroy
+  has_many :plans, through: :plan_assignments
+
   validates_presence_of :email, :password, :password_confirmation
 end

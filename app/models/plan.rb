@@ -5,6 +5,9 @@ class Plan < ApplicationRecord
   belongs_to :topic
   has_many :devos, dependent: :destroy
 
+  has_many :plan_assignments, dependent: :destroy
+  has_many :users, through: :plan_assignments
+
   has_one_attached :plan_image
 
   enum status: {
