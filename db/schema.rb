@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_02_191532) do
+ActiveRecord::Schema.define(version: 2018_07_13_163407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2018_07_02_191532) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "plan_assignments", force: :cascade do |t|
+    t.bigint "plan_id"
+    t.bigint "user_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_plan_assignments_on_plan_id"
+    t.index ["user_id"], name: "index_plan_assignments_on_user_id"
+  end
+
   create_table "plans", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id"
@@ -93,6 +103,8 @@ ActiveRecord::Schema.define(version: 2018_07_02_191532) do
   end
 
   add_foreign_key "devos", "plans"
+  add_foreign_key "plan_assignments", "plans"
+  add_foreign_key "plan_assignments", "users"
   add_foreign_key "plans", "topics"
   add_foreign_key "plans", "users"
 end
