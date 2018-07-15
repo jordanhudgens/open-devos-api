@@ -2,8 +2,7 @@ class PlanAssignmentsController < ApplicationController
   skip_before_action :authenticate_user, only: [:index, :show]
 
   def index
-    # TODO
-    # Returns a user's plans
+    render json: @current_user.plans
   end
 
   def create
