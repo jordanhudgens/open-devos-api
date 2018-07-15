@@ -2,7 +2,8 @@ class PlanAssignmentsController < ApplicationController
   skip_before_action :authenticate_user, only: [:show]
 
   def index
-    render json: @current_user.plans
+    plans = Plan.where(id: @current_user.plan_assignments.pluck(:plan_id))
+    render json: plans
   end
 
   def create
