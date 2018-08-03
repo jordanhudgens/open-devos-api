@@ -7,4 +7,12 @@ class PlanAssignment < ApplicationRecord
     completed: 1,
     archived: 2
   }
+
+  def devo_count
+    if self.devos.any?
+      self.devos.count
+    else
+      0
+    end
+  end
 end
