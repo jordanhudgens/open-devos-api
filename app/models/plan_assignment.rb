@@ -9,8 +9,8 @@ class PlanAssignment < ApplicationRecord
   }
 
   def devo_count
-    if self.devos.any?
-      self.devos.count
+    if self.plan.devos.any?
+      self.plan.devos.count
     else
       0
     end
