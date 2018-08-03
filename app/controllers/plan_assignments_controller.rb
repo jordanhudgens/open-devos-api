@@ -10,7 +10,7 @@ class PlanAssignmentsController < ApplicationController
     if @current_user.plan_assignments.any?
       render json: @current_user.plan_assignments.last
     else
-      render json: { plan_assignments: false }
+      render json: { plan_assignment: false }
     end
   end
 
