@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :plans
   get 'user-plans', to: 'plans#user_plans'
-  get 'last-plan', to: 'plans#last_plan'
   resources :devos
   resources :topics
   resources :plan_assignments, only: [:create, :index, :update]
+  get 'last-plan', to: 'plan_assignments#last_plan'
   get 'profile/:user_slug', to: 'users#profile'
   get :search, to: 'search#search'
   post :login, to: 'auths#login'

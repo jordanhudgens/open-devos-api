@@ -16,16 +16,6 @@ class PlansController < ApplicationController
     render json: User.find(params['user_id']).plans
   end
 
-  def last_plan
-    user = User.find(params['user_id'])
-
-    if user.plans.any?
-      render json: user.plans.last
-    else
-      render json: { no_plans: true }
-    end
-  end
-
   def create
     @plan = Plan.new(plan_params)
 

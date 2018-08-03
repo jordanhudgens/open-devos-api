@@ -6,6 +6,14 @@ class PlanAssignmentsController < ApplicationController
     render json: plans
   end
 
+  def last_plan
+    if @current_user.plan_assignments.any?
+      render json: @current_user.plan_assignments.last
+    else
+      render json: { plan_assignments: false }
+    end
+  end
+
   def create
     @plan_assignment = PlanAssignment.new(plan_assignment_params)
 
