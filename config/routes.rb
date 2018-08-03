@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :plans
   get 'user-plans', to: 'plans#user_plans'
-  get 'plans/last-plan', to: 'plans#last_plan'
+  get 'last-plan', to: 'plans#last_plan'
   resources :devos
   resources :topics
   resources :plan_assignments, only: [:create, :index, :update]
