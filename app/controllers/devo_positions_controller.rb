@@ -6,7 +6,7 @@ class DevoPositionsController < ApplicationController
       devo.update!(position: index)
     end
 
-    render json: devos.order('position desc')
+    render json: devos.order('position asc')
   end
 
   private
