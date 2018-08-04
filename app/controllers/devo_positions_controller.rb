@@ -1,8 +1,12 @@
 class DevoPositionsController < ApplicationController
   def update
-    params[:devos].each_with_index do |id, index|
-      Devo.find(id).update!(position: index)
+    devos = Devo.where(id: params[:devos])
+
+    devos.each_with_index do |devo, index|
+      devo.update!(position: index)
     end
+
+    render json: devos.order('position desc')
   end
 
   private
