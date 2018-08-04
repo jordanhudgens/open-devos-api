@@ -1,9 +1,9 @@
 class DevoPositionsController < ApplicationController
   def update
     puts "ORDER>>>>>>>>>>>>>>" * 10, params['devos'], "<<<<<<<<<<<<<<<<<<<<<<ORDER"
-    # params[:order].each do |key, value|
-    #   Devo.find(value[:id]).update(position: value[:position])
-    # end
+    params[:devos].each_with_index do |id, index|
+      Devo.find(id).update!(position: index)
+    end
   end
 
   private
