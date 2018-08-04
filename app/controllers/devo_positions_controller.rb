@@ -2,7 +2,7 @@ class DevoPositionsController < ApplicationController
   def update
     devos = Devo.where(id: params[:devos])
 
-    devos.each_with_index do |devo, index|
+    params[:devos].each_with_index do |devo, index|
       devo.update!(position: index)
     end
 
