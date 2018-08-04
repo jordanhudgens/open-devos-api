@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_04_200936) do
+ActiveRecord::Schema.define(version: 2018_08_04_201106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2018_08_04_200936) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "devo_id"
+    t.index ["devo_id"], name: "index_plan_assignments_on_devo_id"
     t.index ["plan_id"], name: "index_plan_assignments_on_plan_id"
     t.index ["user_id"], name: "index_plan_assignments_on_user_id"
   end
@@ -103,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_08_04_200936) do
   end
 
   add_foreign_key "devos", "plans"
+  add_foreign_key "plan_assignments", "devos"
   add_foreign_key "plan_assignments", "plans"
   add_foreign_key "plan_assignments", "users"
   add_foreign_key "plans", "topics"

@@ -7,4 +7,5 @@ class PlanAssignmentSerializer < ActiveModel::Serializer
 
   belongs_to :user
   belongs_to :plan
+  belongs_to :devo
 end

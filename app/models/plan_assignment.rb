@@ -1,6 +1,9 @@
 class PlanAssignment < ApplicationRecord
   belongs_to :plan
   belongs_to :user
+  belongs_to :devo, optional: true
+
+  after_initialize :set_defaults
 
   enum status: {
     started: 0,
@@ -15,4 +18,10 @@ class PlanAssignment < ApplicationRecord
       0
     end
   end
+
+  private
+
+    def set_defaults
+      self.devo ||= self.plan.devos.order('position asc').first
+    end
 end
