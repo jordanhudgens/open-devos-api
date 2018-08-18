@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :random_plans, only: [:index]
   resources :devo_positions, only: [:update]
   resources :plans
   get 'user-plans', to: 'plans#user_plans'

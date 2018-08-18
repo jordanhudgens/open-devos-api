@@ -31,4 +31,8 @@ class Plan < ApplicationRecord
       self.devos.order('updated_at desc').first.updated_at
     end
   end
+
+  def self.random_plans(requested_plan_count)
+    order("RANDOM()").limit(requested_plan_count)
+  end
 end
