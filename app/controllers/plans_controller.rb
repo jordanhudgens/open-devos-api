@@ -3,7 +3,7 @@ class PlansController < ApplicationController
   skip_before_action :authenticate_user, only: [:index, :show]
 
   def index
-    @plans = Plan.all
+    @plans = Plan.order_by_most_recent.limit(10)
 
     render json: @plans
   end
