@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :bookmarks
+  resources :bookmarks, except: [:show, :update]
   resources :random_plans, only: [:index]
   resources :devo_positions, only: [:update]
   resources :plans
