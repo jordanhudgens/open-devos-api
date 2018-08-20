@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:destroy]
 
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = User.find(params['user_id']).bookmarks
 
     render json: @bookmarks
   end
