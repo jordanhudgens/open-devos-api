@@ -18,7 +18,6 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    puts "BOOOOOKMARK DELETE" * 100, @bookmark, params.inspect, "BOOOOOOOO" * 100
     @bookmark.destroy
   end
 
