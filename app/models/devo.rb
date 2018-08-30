@@ -25,7 +25,7 @@ class Devo < ApplicationRecord
 
   def set_defaults
     if self.plan.devos.any?
-      self.position ||= self.plan.devos.order('position asc').first.position + 1
+      self.position ||= self.plan.devos.order('position asc').last.position + 1
     else
       self.position ||= 0
     end
