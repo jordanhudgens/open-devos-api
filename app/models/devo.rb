@@ -21,6 +21,12 @@ class Devo < ApplicationRecord
 
   validates_presence_of :title, :content, :position, :plan_id
 
+  after_initialize :set_defaults
+
+  def set_defaults
+    self.position ||= 0
+  end
+
   def last_published
     self.updated_at
   end
