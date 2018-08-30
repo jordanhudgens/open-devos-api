@@ -24,7 +24,11 @@ class Devo < ApplicationRecord
   after_initialize :set_defaults
 
   def set_defaults
-    self.position ||= 0
+    if self.plan.devos.any?
+      self.position ||= self.plan.devos.order('position asc').first.position + 1
+    else
+      self.position ||= 0
+    end
   end
 
   def last_published
