@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :plans
   has_many :bookmarks
   has_many :plan_assignments
+  has_many :devo_completions
 end
