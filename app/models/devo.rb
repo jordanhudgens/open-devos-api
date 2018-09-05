@@ -10,6 +10,8 @@ class Devo < ApplicationRecord
 
   has_one_attached :devo_image
 
+  has_many :devo_completions, dependent: :destroy
+
   extend FriendlyId
   friendly_id :title, use: :slugged
   belongs_to :plan

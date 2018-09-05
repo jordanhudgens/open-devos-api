@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   has_many :plans, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :devo_completions, dependent: :destroy
 
   has_many :plan_assignments, dependent: :destroy
 
