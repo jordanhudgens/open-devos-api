@@ -1,7 +1,8 @@
 class DevoCompletionsController < ApplicationController
   def create
     @devo_completion = DevoCompletion.new(devo_completion_params)
-    @plan = Devo.find(params[:devo_id]).plan
+    puts "DEVO COMPLETION PARAMS" * 100, params.inspect
+    @plan = Devo.find(params[:devo_completion][:devo_id]).plan
 
     if @devo_completion.save
       render json: @plan, status: :created, location: @plan
