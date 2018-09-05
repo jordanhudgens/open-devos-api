@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :devos
   resources :topics
   resources :plan_assignments, only: [:create, :index, :update]
-  resources :devo_completions, only: [:create, :index]
+  resources :devo_completions, only: [:create, :index, :destroy]
   get 'last-plan', to: 'plan_assignments#last_plan'
   get 'profile/:user_slug', to: 'users#profile'
   get :search, to: 'search#search'

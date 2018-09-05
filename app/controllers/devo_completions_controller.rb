@@ -17,6 +17,11 @@ class DevoCompletionsController < ApplicationController
     end
   end
 
+  def destroy
+    @devo_completion = DevoCompletion.find_by_devo_id(params[:devo_id])
+    @devo_completion.destroy
+  end
+
   private
 
     def devo_completion_params
