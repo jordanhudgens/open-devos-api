@@ -1,4 +1,10 @@
 class DevoCompletionsController < ApplicationController
+  def index
+    @completed_devos = DevoCompletion.where(user_id: params[:user_id]).pluck(:devo_id)
+
+    render json: @completed_devos
+  end
+
   def create
     @devo_completion = DevoCompletion.new(devo_completion_params)
     puts "DEVO COMPLETION PARAMS" * 100, params.inspect
