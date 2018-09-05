@@ -1,11 +1,13 @@
 class DevoCompletionsController < ApplicationController
   def index
-    @completed_devos = DevoCompletion.where(user_id: params[:user_id]).pluck(:devo_id)
+    @completed_devos = DevoCompletion.where(user_id: params[:user_id])
 
     if @completed_devos.any?
-      render json: @completed_devos
+      @completed_devo_ids = @completed_devos.pluck(:devo_id)
+
+      render json: @completed_devo_ids
     else
-      render json: [], root: false
+      render json: @completed_devos
     end
   end
 
