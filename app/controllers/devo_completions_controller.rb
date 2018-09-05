@@ -5,7 +5,7 @@ class DevoCompletionsController < ApplicationController
     if @completed_devos.any?
       render json: @completed_devos
     else
-      render json: []
+      render json: [], root: false
     end
   end
 
