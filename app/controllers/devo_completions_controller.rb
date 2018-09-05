@@ -7,7 +7,6 @@ class DevoCompletionsController < ApplicationController
 
   def create
     @devo_completion = DevoCompletion.new(devo_completion_params)
-    puts "DEVO COMPLETION PARAMS" * 100, params.inspect
     @plan = Devo.find(params[:devo_completion][:devo_id]).plan
 
     if @devo_completion.save
@@ -18,7 +17,7 @@ class DevoCompletionsController < ApplicationController
   end
 
   def destroy
-    @devo_completion = DevoCompletion.find_by_devo_id(params[:devo_id])
+    @devo_completion = DevoCompletion.find_by_devo_id(params[:id])
     @devo_completion.destroy
   end
 
