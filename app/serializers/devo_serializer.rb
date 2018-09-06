@@ -7,4 +7,6 @@ class DevoSerializer < ActiveModel::Serializer
              :slug,
              :last_published,
              :featured_image
+
+  belongs_to :plan
 end
