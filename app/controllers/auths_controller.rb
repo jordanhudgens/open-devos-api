@@ -1,6 +1,16 @@
 class AuthsController < ApplicationController
   skip_before_action :authenticate_user
 
+  def logged_in
+    current_user = DecodeAuthenticationCommand.call(request.headers).result
+
+    if current_user
+      render json: { logged_in: true }
+    else
+      render json: { logged_in: false }
+    end
+  end
+
   def register
     email, password, password_confirmation, profile_slug = params.slice(:user, :password, :password_confirmation, :profile_slug).values
 
