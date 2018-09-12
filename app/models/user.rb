@@ -13,6 +13,6 @@ class User < ApplicationRecord
   validates_presence_of :email, :password, :password_confirmation
 
   def self.authors
-    self.left_outer_joins(:plans).where.not(plans: {id: nil})
+    self.left_outer_joins(:plans).where.not(plans: {id: nil}).uniq
   end
 end
