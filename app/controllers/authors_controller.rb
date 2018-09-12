@@ -3,5 +3,7 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = User.authors
+
+    render json: @authors
   end
 end
