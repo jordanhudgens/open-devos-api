@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post :login, to: 'auths#login'
   post :register, to: 'auths#register'
   get :logged_in, to: 'auths#logged_in'
+  resources :authors, only: [:index]
 end
