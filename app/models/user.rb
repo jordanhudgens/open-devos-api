@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_many :plan_assignments, dependent: :destroy
 
-  validates_presence_of :email, :password, :password_confirmation
+  validates_presence_of :email, :password, :password_confirmation, :full_name
 
   def self.authors
     self.left_outer_joins(:plans).where.not(plans: {id: nil, status: 'draft'}).uniq

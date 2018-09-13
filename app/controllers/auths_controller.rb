@@ -12,13 +12,14 @@ class AuthsController < ApplicationController
   end
 
   def register
-    email, password, password_confirmation, profile_slug = params.slice(:user, :password, :password_confirmation, :profile_slug).values
+    email, password, password_confirmation, profile_slug = params.slice(:user, :password, :password_confirmation, :profile_slug, :full_name).values
 
     user = User.create!(
       email: email,
       password: password,
       password_confirmation: password_confirmation,
-      profile_slug: profile_slug
+      profile_slug: profile_slug,
+      full_name: full_name
     )
 
     if user
