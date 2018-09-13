@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_181443) do
+ActiveRecord::Schema.define(version: 2018_09_13_172042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_181443) do
     t.datetime "updated_at", null: false
     t.string "profile_slug"
     t.string "slug"
+    t.string "full_name"
   end
 
   add_foreign_key "bookmarks", "plans"
