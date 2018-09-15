@@ -15,7 +15,10 @@ class UsersController < ApplicationController
   def profile
     user = User.find_by_slug(params[:user_slug])
 
-    if user
+    if user && @current_user && (@current_user.id == user.id)
+      @plans = user.plans
+      render json: @plans
+    elsif user
       @plans = user.plans.published
       render json: @plans
     else
