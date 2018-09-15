@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:profile]
 
   def update
-    puts "UPDATE PARAMS" * 100, @current_user.inspect, "user_params" * 100, user_params.inspect, "END" * 100
+    puts "UPDATE PARAMS" * 100, @current_user.id, "user_params" * 100, params[:id], "END" * 100
     raise NotAuthorizedException unless @current_user.id == params[:id]
 
     if @user.update(user_params)
