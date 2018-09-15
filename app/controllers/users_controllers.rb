@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     puts "AUTHHHHHH" * 100, request.headers['Authorization'], "AUTH" * 100
 
-    if request.headers['Authorization']
+    if request.headers['Authorization'] != 'Bearer null'
       @current_user = DecodeAuthenticationCommand.call(request.headers).result
     end
 
