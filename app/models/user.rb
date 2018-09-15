@@ -16,4 +16,10 @@ class User < ApplicationRecord
   def self.authors
     self.left_outer_joins(:plans).where.not(plans: {id: nil, status: 'draft'}).uniq
   end
+
+  def avatar_url
+    if self.avatar.attachment
+      self.avatar.attachment.service_url
+    end
+  end
 end
