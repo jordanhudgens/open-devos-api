@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def update
     puts "UPDATE PARAMS" * 100, @current_user.inspect, "user_params" * 100, user_params.inspect, "END" * 100
-    raise NotAuthorizedException unless @current_user.id == user_params[:id]
+    raise NotAuthorizedException unless @current_user.id == params[:id]
 
     if @user.update(user_params)
       render json: @user
