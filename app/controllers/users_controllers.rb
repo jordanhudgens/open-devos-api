@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:profile]
 
   def update
-    puts "UPDATE PARAMS" * 100, @current_user.id, "user_params" * 100, params[:id], "END" * 100
     raise NotAuthorizedException unless String(@current_user.id) == String(params[:id])
 
     if @user.update(user_params)
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
     user = User.find_by_slug(params[:user_slug])
 
     if user
-      @plans = user.plans
+      @plans = user.plans.published
       render json: @plans
     else
       render json: 'Could not find user', status: :unprocessable_entity
