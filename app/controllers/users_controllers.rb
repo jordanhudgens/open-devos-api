@@ -13,12 +13,12 @@ class UsersController < ApplicationController
   end
 
   def profile
+    puts "REQUEST HEADER" * 100, request.headers, "REQUEST HEADERS" * 100
+
     @current_user = DecodeAuthenticationCommand.call(request.headers).result
 
     user = User.find_by_slug(params[:user_slug])
 
-    puts "CURRENT USER" * 100, @current_user.id, "CURRENT USER" * 100
-    puts "PROFILE USER" * 100, user.id, "PROFILE USER" * 100
 
     if user && @current_user && (@current_user.id == user.id)
       @plans = user.plans
