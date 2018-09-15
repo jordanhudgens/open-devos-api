@@ -7,8 +7,9 @@ class User < ApplicationRecord
   has_many :plans, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :devo_completions, dependent: :destroy
-
   has_many :plan_assignments, dependent: :destroy
+
+  has_one_attached :avatar
 
   validates_presence_of :email, :password, :password_confirmation, :full_name
 

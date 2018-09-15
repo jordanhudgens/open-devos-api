@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :plan_assignments, only: [:create, :index, :update]
   resources :devo_completions, only: [:create, :index, :destroy]
   get 'last-plan', to: 'plan_assignments#last_plan'
+  resources :users, only: [:update]
   get 'profile/:user_slug', to: 'users#profile'
   get :search, to: 'search#search'
   post :login, to: 'auths#login'
