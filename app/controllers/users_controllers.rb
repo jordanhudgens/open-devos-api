@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   def profile
     user = User.find_by_slug(params[:user_slug])
 
+    puts "AUTHHHHHH" * 100, request.headers['Authorization'], "AUTH" * 100
+
     if request.headers['Authorization']
       @current_user = DecodeAuthenticationCommand.call(request.headers).result
     end
