@@ -3,7 +3,6 @@ class TopicSerializer < ActiveModel::Serializer
              :title,
              :slug,
              :thumbnail,
-             :banner
-
-  has_many :plans
+             :banner,
+             :published_plans
 end
