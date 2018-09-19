@@ -5,5 +5,7 @@ class TopicSerializer < ActiveModel::Serializer
              :thumbnail,
              :banner
 
-  has_many :plans { @object.plans.published }
+  has_many :plans do
+    @object.plans.published
+  end
 end
