@@ -4,8 +4,4 @@ class Topic < ApplicationRecord
   has_many :plans, dependent: :destroy
 
   validates_presence_of :title
-
-  def published_plans
-    self.plans.where(status: 'published')
-  end
 end
