@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update]
   skip_before_action :authenticate_user, only: [:profile]
+  before_action :check_for_current_user, only: [:profile]
 
   def update
     raise NotAuthorizedException unless String(@current_user.id) == String(params[:id])
@@ -14,12 +15,6 @@ class UsersController < ApplicationController
 
   def profile
     user = User.find_by_slug(params[:user_slug])
-
-    puts "AUTHHHHHH" * 100, request.headers['Authorization'], "AUTH" * 100
-
-    if request.headers['Authorization'] != 'Bearer null'
-      @current_user = DecodeAuthenticationCommand.call(request.headers).result
-    end
 
     if user && @current_user && (@current_user.id == user.id)
       @plans = user.plans
