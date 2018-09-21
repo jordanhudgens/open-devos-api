@@ -12,6 +12,10 @@ class PlanSerializer < ActiveModel::Serializer
 
   has_many :devos do |devo|
     puts "CALLED FROM PUBLISHED AND DRAFT" * 500, devo.send(:instance_options).inspect, "PUBLISHED AND DRAFT" * 500
-    @object.devos
+    if devo.send(:instance_options)['published_and_draft']
+      @object.devos
+    else
+      @object.devos.published
+    end
   end
 end
