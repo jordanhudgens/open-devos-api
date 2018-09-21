@@ -10,7 +10,9 @@ class PlanSerializer < ActiveModel::Serializer
   belongs_to :topic
   belongs_to :user
 
-  def published_and_draft?
+  def self.published_and_draft?
+    puts "CALLED FROM PUBLISHED AND DRAFT" * 500, @instance_options.inspect, "PUBLISHED AND DRAFT" * 500
+
     if @instance_options[:published_and_draft]
       true
     else
@@ -19,7 +21,8 @@ class PlanSerializer < ActiveModel::Serializer
   end
 
   has_many :devos do
-    if published_and_draft?
+    puts "CALLED FROM has_many" * 500, self.published_and_draft?, "has_many" * 500
+    if self.published_and_draft?
       @object.devos
     else
       @object.devos.published
