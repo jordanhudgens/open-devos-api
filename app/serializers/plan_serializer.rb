@@ -11,7 +11,7 @@ class PlanSerializer < ActiveModel::Serializer
   belongs_to :user
 
   has_many :devos do |devo|
-    puts "CALLED FROM PUBLISHED AND DRAFT" * 500, devo.inspect, "PUBLISHED AND DRAFT" * 500
+    puts "CALLED FROM PUBLISHED AND DRAFT" * 500, devo.instance_options.inspect, "PUBLISHED AND DRAFT" * 500
     @object.devos
   end
 end
