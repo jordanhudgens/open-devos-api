@@ -1,5 +1,7 @@
 class PlansController < ApplicationController
+  include CurrentUserConcern
   before_action :set_plan, only: [:show, :update, :destroy]
+  before_action :check_for_current_user, only: [:show]
   skip_before_action :authenticate_user, only: [:index, :show]
 
   def index
@@ -9,7 +11,11 @@ class PlansController < ApplicationController
   end
 
   def show
-    render json: @plan
+    if @current_user && @current_user.id == @plan.user_id
+      render json: @plan, published_and_draft: true
+    else
+      render json: @plan, published_and_draft: false
+    end
   end
 
   def user_plans
