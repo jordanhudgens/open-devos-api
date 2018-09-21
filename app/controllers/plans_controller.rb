@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   include CurrentUserConcern
   before_action :set_plan, only: [:show, :update, :destroy]
   skip_before_action :authenticate_user, only: [:index, :show]
-  before_action :check_for_current_user, only: [:show]
+  before_action :check_for_current_user
 
   def index
     @plans = Plan.published.order_by_most_recent.limit(10)
@@ -11,7 +11,7 @@ class PlansController < ApplicationController
   end
 
   def show
-    puts "CURRENT USER" * 500, @current_user.inspect, "CURRENT USER" * 500
+    puts "CURRENT USER PLANS" * 500, @current_user.inspect, "PLANS" * 500
 
     if @current_user && @current_user.id == @plan.user_id
       render json: @plan, published_and_draft: true
