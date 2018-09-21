@@ -1,8 +1,8 @@
 class PlansController < ApplicationController
   include CurrentUserConcern
   before_action :set_plan, only: [:show, :update, :destroy]
-  before_action :check_for_current_user, only: [:show]
   skip_before_action :authenticate_user, only: [:index, :show]
+  before_action :check_for_current_user, only: [:show]
 
   def index
     @plans = Plan.published.order_by_most_recent.limit(10)
