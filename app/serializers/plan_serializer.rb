@@ -5,18 +5,24 @@ class PlanSerializer < ActiveModel::Serializer
              :summary,
              :status,
              :last_published,
-             :featured_image,
-             :devos
+             :featured_image
 
   belongs_to :topic
   belongs_to :user
 
-  def devos
-      puts "SERIALIZER STUFF" * 100, @instance_options.inspect, "SERIALIZER STUFF" * 100
-      if @instance_options[:published_and_draft]
-        @object.devos
-      else
-        @object.devos.published
-      end
+  def published_and_draft?
+    if @instance_options[:published_and_draft]
+      true
+    else
+      false
+    end
+  end
+
+  has_many :devos do
+    if published_and_draft?
+      @object.devos
+    else
+      @object.devos.published
+    end
   end
 end

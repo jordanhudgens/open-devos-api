@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   def profile
     user = User.find_by_slug(params[:user_slug])
 
-    puts "CURRENT USER PROFILE" * 500, @current_user.inspect, "PROFILE" * 500
-
     if user && @current_user && (@current_user.id == user.id)
       @plans = user.plans
       render json: @plans
