@@ -5,7 +5,7 @@ class AuthsController < ApplicationController
     current_user = DecodeAuthenticationCommand.call(request.headers).result
 
     if current_user
-      render json: { logged_in: true, current_user: current_user }
+      render json: { logged_in: true, current_user: current_user, profile_image: current_user.avatar_url }
     else
       render json: { logged_in: false }
     end
