@@ -11,6 +11,9 @@ class PlansController < ApplicationController
   end
 
   def show
+    puts "@current_user" * 500, @current_user.inspect, "@current_user" * 500
+    puts "-" * 500
+    puts "@plan" * 500, @plan.inspect, "@plan" * 500
     if @current_user && @current_user.id == @plan.user_id
       render json: @plan, published_and_draft: true
     else
