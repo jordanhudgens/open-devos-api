@@ -11,11 +11,10 @@ class PlanSerializer < ActiveModel::Serializer
   belongs_to :user
 
   has_many :devos do |devo|
+    puts "X" * 500, devo.send(:instance_options).inspect
     if devo.send(:instance_options)['published_and_draft']
-      puts "-" * 500, devo.send(:instance_options)['published_and_draft']
       @object.devos
     else
-      puts "X" * 500, devo.send(:instance_options)['published_and_draft']
       @object.devos.published
     end
   end
