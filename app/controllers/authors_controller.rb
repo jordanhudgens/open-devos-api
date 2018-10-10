@@ -4,6 +4,6 @@ class AuthorsController < ApplicationController
   def index
     @authors = User.authors
 
-    render json: @authors
+    render json: @authors, each_serializer: AuthorSerializer
   end
 end
