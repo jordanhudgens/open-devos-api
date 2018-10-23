@@ -1,5 +1,5 @@
 class PlanAssignment < ApplicationRecord
-  belongs_to :plan
+  belongs_to :plan, counter_cache: true
   belongs_to :user
   belongs_to :devo, optional: true
 
