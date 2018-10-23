@@ -33,7 +33,7 @@ class Plan < ApplicationRecord
   end
 
   def self.order_by_most_popular
-    left_joins(:plan_assignments).group(:id).order('COUNT(plans.id) DESC')
+    published.order('plan_assignments_count DESC')
   end
 
   def self.order_by_most_recent
