@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/popular', to: 'popular#index'
   resources :bookmarks, except: [:show, :update]
   resources :random_plans, only: [:index]
   resources :devo_positions, only: [:update]
