@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :check_for_current_user, except: [:create]
+  skip_before_action :check_for_current_user, only: [:create]
 
   def create
     user = User
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def logged_in
-    puts "LI sesion" * 1000, session.inspect, "LI session" * 1000, @current_user.inspect, "LI session" * 1000, session[:user_id], "LI session" * 1000
+    puts "CURRENT USER LI session" * 1000, @current_user.inspect, "SESSION USER ID LI session" * 1000, session[:user_id], "LI session" * 1000
     if @current_user
       render json: { logged_in: true, user: @current_user }
     else
