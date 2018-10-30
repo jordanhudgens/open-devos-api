@@ -1,6 +1,6 @@
 class DevosController < ApplicationController
   before_action :set_devo, only: [:show, :update, :destroy]
-  skip_before_action :authenticate_user, only: [:index, :show]
+  skip_before_action :check_for_current_user, only: [:index, :show]
 
   def index
     @devos = Devo.all

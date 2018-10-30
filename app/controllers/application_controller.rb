@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::API
-  include TokenAuthenticatable
   include Pundit
+  include CurrentUserConcern
 end

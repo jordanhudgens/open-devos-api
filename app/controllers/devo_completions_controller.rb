@@ -1,4 +1,5 @@
 class DevoCompletionsController < ApplicationController
+
   def index
     @completed_devos = DevoCompletion.where(user_id: params[:user_id])
 

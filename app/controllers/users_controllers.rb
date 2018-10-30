@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  include CurrentUserConcern
   before_action :set_user, only: [:update]
-  skip_before_action :authenticate_user, only: [:profile]
   before_action :check_for_current_user, only: [:profile]
 
   def update

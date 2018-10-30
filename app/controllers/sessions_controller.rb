@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  include CurrentUserConcern
+  skip_before_action :check_for_current_user, except: [:create]
 
   def create
     user = User
