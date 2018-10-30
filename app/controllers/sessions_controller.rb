@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def logged_in
-    puts "LI sesion" * 1000, session.inspect, "LI session" * 1000, user.inspect, "LI session" * 1000, session[:user_id], "LI session" * 1000
+    puts "LI sesion" * 1000, session.inspect, "LI session" * 1000, @current_user.inspect, "LI session" * 1000, session[:user_id], "LI session" * 1000
     if @current_user
       render json: { logged_in: true, user: @current_user }
     else
