@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
+      puts "sesion" * 1000, session.inspect, "session" * 1000, user.inspect, "session" * 1000, session[:user_id], "session" * 1000
       render json: { status: :created, logged_in: true, user: user }
     else
       render json: { status: 500 }
