@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
 
   def create
     user = User.create!(
-      full_name: params['user']['user_name'],
+      full_name: params['user']['full_name'],
       email: params['user']['email'],
       password: params['user']['password'],
       password_confirmation: params['user']['password_confirmation'],
