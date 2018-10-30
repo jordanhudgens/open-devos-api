@@ -10,8 +10,8 @@ module CurrentUserConcern
   private
 
   def check_for_current_user
-    if request.headers['Authorization'] != 'Bearer null'
-      @current_user = DecodeAuthenticationCommand.call(request.headers).result
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
     end
   end
 end

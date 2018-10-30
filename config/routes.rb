@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   resources :users, only: [:update]
   get 'profile/:user_slug', to: 'users#profile'
   get :search, to: 'search#search'
-  post :login, to: 'auths#login'
-  post :register, to: 'auths#register'
-  get :logged_in, to: 'auths#logged_in'
   resources :authors, only: [:index]
+
+  resources :registrations, only: [:create]
+  resources :sessions, only: [:create]
+  delete :logout, to: 'sessions#logout'
+  get :logged_in, to: 'sessions#logged_in'
 end
