@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      render json: { status: :created, logged_in: true, user: user }
+      render json: { status: :created, logged_in: true, user: user, avatar: @current_user.avatar_url }
     else
       render json: { status: 500 }
     end
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def logged_in
     if @current_user
-      render json: { logged_in: true, user: @current_user }
+      render json: { logged_in: true, user: @current_user, avatar: @current_user.avatar_url }
     else
       render json: { logged_in: false }
     end

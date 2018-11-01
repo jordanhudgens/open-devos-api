@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      render json: { status: :created, user: user }
+      render json: { status: :created, user: user, avatar: user.avatar_url }
     else
       render json: { status: 500 }
     end
