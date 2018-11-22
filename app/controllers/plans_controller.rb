@@ -14,8 +14,10 @@ class PlansController < ApplicationController
 
   def show
     if @current_user && @current_user.id == @plan.user_id
+      puts "CURRENT USER" * 500, params.inspect, @current_user.inspect, "CURRENT_USER" * 500
       render json: @plan, published_and_draft: true
     else
+      puts "NOT CURRENT USER" * 500, params.inspect, "NOT_CURRENT_USER" * 500
       render json: @plan, published_and_draft: false
     end
   end
