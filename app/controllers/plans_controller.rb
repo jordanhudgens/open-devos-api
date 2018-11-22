@@ -3,7 +3,11 @@ class PlansController < ApplicationController
   skip_before_action :check_for_current_user, only: [:index, :show]
 
   def index
-    @plans = Plan.published.order_by_most_recent.limit(10)
+    if @current_user
+      @plans = @current_user.plans.order_by_most_recent
+    else
+      @plans = Plan.published.order_by_most_recent
+    end
 
     render json: @plans
   end
