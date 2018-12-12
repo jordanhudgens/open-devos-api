@@ -5,7 +5,8 @@ class PlanSerializer < ActiveModel::Serializer
              :summary,
              :status,
              :last_published,
-             :featured_image
+             :featured_image,
+             :user_id
 
   belongs_to :topic
   belongs_to :user
