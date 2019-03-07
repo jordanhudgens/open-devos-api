@@ -34,12 +34,14 @@ class PlansController < ApplicationController
   end
 
   def update
-    authorize @plan
-
-    if @plan.update(plan_params)
-      render json: @plan
+    if @plan.user == @current_user
+      if @plan.update(plan_params)
+        render json: @plan
+      else
+        render json: @plan.errors, status: :unprocessable_entity
+      end
     else
-      render json: @plan.errors, status: :unprocessable_entity
+      render json: { status: 401 }
     end
   end
 
