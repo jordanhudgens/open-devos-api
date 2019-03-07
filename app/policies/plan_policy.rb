@@ -7,6 +7,8 @@ class PlanPolicy
   end
 
   def update?
+    puts "PLAN USER" * 500, user.inspect, "plan user" * 500
+    puts "PLAN USER" * 500, plan.inspect, "plan user" * 500
     plan.user == user
   end
 
