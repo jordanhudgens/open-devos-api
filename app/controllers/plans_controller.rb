@@ -35,6 +35,7 @@ class PlansController < ApplicationController
 
   def update
     if @plan.user == @current_user
+      puts "UPDATE" * 500, @plan.inspect, "update" * 500
       if @plan.update(plan_params)
         render json: @plan
       else
