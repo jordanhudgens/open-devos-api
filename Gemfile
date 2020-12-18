@@ -20,6 +20,7 @@ group :development do
 end
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
+gem 'knock', '~> 2.1', '>= 2.1.1'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'friendly_id', '~> 5.4', '>= 5.4.1'
