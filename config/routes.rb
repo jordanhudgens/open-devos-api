@@ -11,18 +11,18 @@ Rails.application.routes.draw do
   resources :devo_completions, only: [:create, :index, :destroy]
   get 'last-plan', to: 'plan_assignments#last_plan'
   resources :users, only: [:update]
-  get 'profile/:user_slug', to: 'users#profile'
   get :search, to: 'search#search'
   resources :authors, only: [:index]
-
   resources :registrations, only: [:create]
   resources :sessions, only: [:create]
   delete :logout, to: 'sessions#logout'
   get :logged_in, to: 'sessions#logged_in'
 
-  # Mobile auth
-  post 'user_token' => 'user_token#create'
-  resources :users
+  namespace :mobile do
+    resource :profile, only: [:show]
+    post 'user_token' => 'user_token#create'
+    resources :users
+  end
 
   root to: "pages#home"
 end
