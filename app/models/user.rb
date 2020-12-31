@@ -14,10 +14,6 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :password, :password_confirmation, :full_name
 
-  def self.authors
-    self.left_outer_joins(:plans).where.not(plans: {id: nil, status: 'draft'}).uniq
-  end
-
   def avatar_url
     if self.avatar.attachment
       self.avatar.attachment.service_url
