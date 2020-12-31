@@ -26,6 +26,22 @@ class Plan < ApplicationRecord
     end
   end
 
+  def featured_image_metadata
+    if self.plan_image.attachment
+      self.plan_image.metadata.as_json
+    end
+  end
+
+  def featured_image_thumbnail
+    if self.plan_image.attachment
+      self
+        .plan_image
+        .variant(resize: '50x50x')
+        .processed
+        .service_url
+    end
+  end
+
   def last_published
     if self.devos.any?
       self.devos.order('updated_at desc').first.updated_at

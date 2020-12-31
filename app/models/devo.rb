@@ -42,4 +42,20 @@ class Devo < ApplicationRecord
       self.devo_image.attachment.service_url
     end
   end
+
+  def featured_image_metadata
+    if self.devo_image.attachment
+      self.devo_image.metadata.as_json
+    end
+  end
+
+  def featured_image_thumbnail
+    if self.devo_image.attachment
+      self
+        .devo_image
+        .variant(resize: '50x50x')
+        .processed
+        .service_url
+    end
+  end
 end
