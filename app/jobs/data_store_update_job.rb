@@ -7,7 +7,7 @@ class DataStoreUpdateJob < ApplicationJob
         payload = UserPlansSerializerService.new(user).run!
       end
     elsif name == "featured_plans"
-      payload = FeaturedPlansSerializerService.new(user).run!
+      payload = FeaturedPlansSerializerService.new.run!
     end
 
     if payload
