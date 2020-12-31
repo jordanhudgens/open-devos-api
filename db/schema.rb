@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_182304) do
+ActiveRecord::Schema.define(version: 2020_12_31_201343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_182304) do
   end
 
   create_table "data_stores", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.integer "name", default: 0, null: false
     t.datetime "version_date", null: false
     t.jsonb "payload", null: false
