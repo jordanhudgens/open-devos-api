@@ -35,8 +35,6 @@ class UserPlansSerializerService
     end
 
     def serialize_data
-      {
-        plans: @data
-      }.to_json
+      @data.to_json
     end
 end
