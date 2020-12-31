@@ -20,6 +20,15 @@ class Plan < ApplicationRecord
                         :topic_id,
                         :summary
 
+  after_commit :add_to_data_store
+
+  def add_to_data_store
+    DataStoreUpdateJob.new(
+      user_id: self.user.id,
+      name: "user_plans"
+    ).run!
+  end
+
   def featured_image
     if self.plan_image.attachment
       self.plan_image.attachment.service_url

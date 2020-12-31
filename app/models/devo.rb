@@ -21,6 +21,15 @@ class Devo < ApplicationRecord
     published: 1
   }
 
+  after_commit :add_to_data_store
+
+  def add_to_data_store
+    DataStoreUpdateJob.new(
+      user_id: self.plan.user.id,
+      name: "user_plans"
+    ).run!
+  end
+
   validates_presence_of :title, :content, :position, :plan_id
 
   after_initialize :set_defaults
