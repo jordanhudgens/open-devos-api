@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :devo_completions, dependent: :destroy
   has_many :plan_assignments, dependent: :destroy
+  has_many :data_stores, dependent: :destroy
 
   has_one_attached :avatar
 
