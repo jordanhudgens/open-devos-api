@@ -20,11 +20,22 @@ group :development do
 end
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
+gem 'redis', '~> 4.2', '>= 4.2.5'
 gem 'knock', '~> 2.1', '>= 2.1.1'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'friendly_id', '~> 5.4', '>= 5.4.1'
+gem 'sidekiq', '~> 6.1', '>= 6.1.2'
 gem 'pundit', '~> 2.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'api-pagination', '~> 4.8', '>= 4.8.2'
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 gem "aws-sdk-s3", require: false
+gem 'json', '~> 2.5', '>= 2.5.1'
+gem 'dead_end', '~> 1.0', '>= 1.0.1'
+gem 'ranked-model', '~> 0.4.6'
+gem 'active_storage_validations', '~> 0.9.0'
+gem 'mini_magick', '~> 4.11'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'ffmpeg', '~> 0.2.5'
 
