@@ -6,8 +6,8 @@ class DataStore < ApplicationRecord
   validates_presence_of :version_date, :payload
 
   enum name: [
-    :devos,
-    :plans
+    :user_plans,
+    :featured_plans
   ]
 
   def self.current_version

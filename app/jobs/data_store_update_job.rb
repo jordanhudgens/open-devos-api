@@ -3,9 +3,7 @@ class DataStoreUpdateJob < ApplicationJob
 
   def perform(user_id: nil, name:)
     if user_id && user = User.find(user_id)
-      if name == "devos"
-        payload = DevosSerializerService.new(user).run!
-      elsif name == "user_plans"
+      if name == "user_plans"
         payload = UserPlansSerializerService.new(user).run!
       end
     elsif name == "featured_plans"

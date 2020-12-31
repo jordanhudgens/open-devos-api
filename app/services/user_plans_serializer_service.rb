@@ -1,7 +1,7 @@
-class FeaturedPlansSerializerService
-  def initialize
-    @plans = Plan.published.random_plans(10)
-    @data  = {}
+class UserPlansSerializerService
+  def initialize user
+    @user = user
+    @data = {}
   end
 
   def run!
@@ -12,7 +12,7 @@ class FeaturedPlansSerializerService
   private
 
     def build_plans
-      @data[:plans] = @plans.map do |plan|
+      @data[:plans] = @user.plans.map do |plan|
         plan_obj = plan.as_json
 
         plan_obj[:topic]                    = plan.topic
