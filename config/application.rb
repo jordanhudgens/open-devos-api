@@ -23,6 +23,7 @@ module OpenDevosApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.active_record.schema_format = :sql
     config.active_job.queue_adapter = :sidekiq
     config.autoload_paths << "#{Rails.root}/lib"
     config.active_storage.variant_processor = :mini_magick
