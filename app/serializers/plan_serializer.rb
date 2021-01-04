@@ -1,5 +1,6 @@
 class PlanSerializer < ActiveModel::Serializer
   attributes :id,
+             :headline,
              :title,
              :slug,
              :summary,

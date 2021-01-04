@@ -62,6 +62,7 @@ class PlansController < ApplicationController
 
     def plan_params
       params.require(:plan).permit(
+        :headline,
         :title,
         :user_id,
         :topic_id,

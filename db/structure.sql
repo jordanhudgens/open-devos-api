@@ -340,7 +340,8 @@ CREATE TABLE public.plans (
     updated_at timestamp without time zone NOT NULL,
     slug character varying,
     summary text,
-    plan_assignments_count integer DEFAULT 0
+    plan_assignments_count integer DEFAULT 0,
+    headline character varying(55)
 );
 
 
@@ -901,6 +902,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201215170045'),
 ('20201215170046'),
 ('20201231182304'),
-('20201231201343');
+('20201231201343'),
+('20210104173348');
 
 
