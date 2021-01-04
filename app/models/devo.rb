@@ -24,10 +24,10 @@ class Devo < ApplicationRecord
   after_commit :add_to_data_store
 
   def add_to_data_store
-    DataStoreUpdateJob.new(
+    DataStoreUpdateJob.perform_later(
       user_id: self.plan.user.id,
       name: "user_plans"
-    ).run!
+    )
   end
 
   validates_presence_of :title, :content, :position, :plan_id

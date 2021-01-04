@@ -23,10 +23,10 @@ class Plan < ApplicationRecord
   after_commit :add_to_data_store
 
   def add_to_data_store
-    DataStoreUpdateJob.new(
+    DataStoreUpdateJob.perform_later(
       user_id: self.user.id,
       name: "user_plans"
-    ).run!
+    )
   end
 
   def featured_image
