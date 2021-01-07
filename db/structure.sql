@@ -302,8 +302,7 @@ CREATE TABLE public.plan_assignments (
     user_id bigint,
     status integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    devo_id bigint
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -738,13 +737,6 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON public.friendly_id_slu
 
 
 --
--- Name: index_plan_assignments_on_devo_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_assignments_on_devo_id ON public.plan_assignments USING btree (devo_id);
-
-
---
 -- Name: index_plan_assignments_on_plan_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -861,14 +853,6 @@ ALTER TABLE ONLY public.devo_completions
 
 
 --
--- Name: plan_assignments fk_rails_e339bd0e40; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plan_assignments
-    ADD CONSTRAINT fk_rails_e339bd0e40 FOREIGN KEY (devo_id) REFERENCES public.devos(id);
-
-
---
 -- PostgreSQL database dump complete
 --
 
@@ -903,6 +887,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201215170046'),
 ('20201231182304'),
 ('20201231201343'),
-('20210104173348');
+('20210104173348'),
+('20210107181018');
 
 

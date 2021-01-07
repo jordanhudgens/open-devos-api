@@ -1,11 +1,12 @@
 class PlanAssignmentSerializer < ActiveModel::Serializer
-  attributes :id,
-             :user_id,
+  attributes :created_at,
+             :devo_count,
+             :id,
              :plan_id,
              :status,
-             :devo_count
+             :updated_at,
+             :user_id
 
   belongs_to :user
   belongs_to :plan
-  belongs_to :devo
 end
