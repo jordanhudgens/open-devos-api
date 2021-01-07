@@ -13,12 +13,15 @@ class DevosController < ApplicationController
   end
 
   def create
-    @devo = Devo.new(devo_params)
+    devo = Devo.new(devo_params)
 
-    if @devo.save
-      render json: @devo, status: :created, location: @devo
+    if devo.save
+      render json: devo, status: :created, location: devo
     else
-      render json: @devo.errors, status: :unprocessable_entity
+      render json: {
+        errors: devo.errors,
+        status: :unprocessable_entity
+      }
     end
   end
 

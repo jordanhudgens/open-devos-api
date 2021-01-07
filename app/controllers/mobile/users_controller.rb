@@ -1,6 +1,22 @@
 class Mobile::UsersController < MobileController
+  skip_before_action :authenticate_user, only: [:create]
+
   def show
     render json: current_user
+  end
+
+  def create
+    user = User.new(user_params)
+
+    if user.save
+      render json: user
+    else
+      render json: {
+        errors: user.errors,
+        status: 422,
+        msg: 'ERROR_UPDATING'
+      }
+    end
   end
 
   def update
