@@ -43,6 +43,7 @@ class Mobile::UsersController < MobileController
       :full_name,
       :lat,
       :lng,
+      :profile_slug,
       :location,
       :password,
       :password_confirmation

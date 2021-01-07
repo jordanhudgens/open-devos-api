@@ -14,6 +14,14 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :password, :password_confirmation, :full_name
 
+  def username
+    if self.profile_slug
+      self.profile_slug
+    else
+      self.slug
+    end
+  end
+
   def avatar_url
     if self.avatar.attachment
       self.avatar.attachment.service_url
