@@ -1,9 +1,12 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id,
+  attributes :avatar_url,
              :email,
-             :slug,
              :full_name,
-             :avatar_url
+             :id,
+             :profile_slug,
+             :slug,
+             :updated_at,
+             :username
 
   has_many :plans
   has_many :bookmarks
