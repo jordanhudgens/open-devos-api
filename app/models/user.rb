@@ -14,6 +14,12 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :password, :password_confirmation, :full_name
 
+  before_validation {
+    self.email        = self.email.to_s.downcase.gsub(" ", "")
+    self.profile_slug = self.profile_slug.to_s.downcase.gsub(" ", "")
+    self.full_name    = self.full_name.to_s.downcase
+  }
+
   def username
     if self.profile_slug
       self.profile_slug
