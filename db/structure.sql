@@ -125,6 +125,38 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: bibles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.bibles (
+    id bigint NOT NULL,
+    name character varying,
+    slug character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: bibles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.bibles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bibles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.bibles_id_seq OWNED BY public.bibles.id;
+
+
+--
 -- Name: bookmarks; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -464,6 +496,13 @@ ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAU
 
 
 --
+-- Name: bibles id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bibles ALTER COLUMN id SET DEFAULT nextval('public.bibles_id_seq'::regclass);
+
+
+--
 -- Name: bookmarks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -556,6 +595,14 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: bibles bibles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bibles
+    ADD CONSTRAINT bibles_pkey PRIMARY KEY (id);
 
 
 --
@@ -664,6 +711,13 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 --
 
 CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.active_storage_variant_records USING btree (blob_id, variation_digest);
+
+
+--
+-- Name: index_bibles_on_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_bibles_on_slug ON public.bibles USING btree (slug);
 
 
 --
@@ -888,6 +942,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201231182304'),
 ('20201231201343'),
 ('20210104173348'),
-('20210107181018');
+('20210107181018'),
+('20210110233738');
 
 
