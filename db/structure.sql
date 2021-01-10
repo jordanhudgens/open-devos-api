@@ -125,15 +125,49 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: bible_books; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.bible_books (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    "position" integer NOT NULL,
+    bible_id bigint NOT NULL,
+    slug character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: bible_books_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.bible_books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bible_books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.bible_books_id_seq OWNED BY public.bible_books.id;
+
+
+--
 -- Name: bible_chapters; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.bible_chapters (
     id bigint NOT NULL,
-    bible_id bigint NOT NULL,
     chapter_number integer,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    bible_book_id bigint
 );
 
 
@@ -561,6 +595,13 @@ ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAU
 
 
 --
+-- Name: bible_books id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_books ALTER COLUMN id SET DEFAULT nextval('public.bible_books_id_seq'::regclass);
+
+
+--
 -- Name: bible_chapters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -674,6 +715,14 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: bible_books bible_books_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_books
+    ADD CONSTRAINT bible_books_pkey PRIMARY KEY (id);
 
 
 --
@@ -809,10 +858,24 @@ CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.ac
 
 
 --
--- Name: index_bible_chapters_on_bible_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_bible_books_on_bible_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_bible_chapters_on_bible_id ON public.bible_chapters USING btree (bible_id);
+CREATE INDEX index_bible_books_on_bible_id ON public.bible_books USING btree (bible_id);
+
+
+--
+-- Name: index_bible_books_on_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_bible_books_on_slug ON public.bible_books USING btree (slug);
+
+
+--
+-- Name: index_bible_chapters_on_bible_book_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_bible_chapters_on_bible_book_id ON public.bible_chapters USING btree (bible_book_id);
 
 
 --
@@ -936,14 +999,6 @@ ALTER TABLE ONLY public.data_stores
 
 
 --
--- Name: bible_chapters fk_rails_3c14056029; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.bible_chapters
-    ADD CONSTRAINT fk_rails_3c14056029 FOREIGN KEY (bible_id) REFERENCES public.bibles(id);
-
-
---
 -- Name: plans fk_rails_45da853770; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -973,6 +1028,14 @@ ALTER TABLE ONLY public.plan_assignments
 
 ALTER TABLE ONLY public.bookmarks
     ADD CONSTRAINT fk_rails_6e5931025c FOREIGN KEY (plan_id) REFERENCES public.plans(id);
+
+
+--
+-- Name: bible_books fk_rails_77a3f9e9d1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_books
+    ADD CONSTRAINT fk_rails_77a3f9e9d1 FOREIGN KEY (bible_id) REFERENCES public.bibles(id);
 
 
 --
@@ -1070,6 +1133,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210107181018'),
 ('20210110233738'),
 ('20210110234029'),
-('20210110234228');
+('20210110234228'),
+('20210110234720'),
+('20210110234944');
 
 
