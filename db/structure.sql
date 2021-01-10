@@ -125,6 +125,71 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: bible_chapters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.bible_chapters (
+    id bigint NOT NULL,
+    bible_id bigint NOT NULL,
+    chapter_number integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: bible_chapters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.bible_chapters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bible_chapters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.bible_chapters_id_seq OWNED BY public.bible_chapters.id;
+
+
+--
+-- Name: bible_verses; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.bible_verses (
+    id bigint NOT NULL,
+    verse_number integer,
+    content text,
+    bible_chapter_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: bible_verses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.bible_verses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: bible_verses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.bible_verses_id_seq OWNED BY public.bible_verses.id;
+
+
+--
 -- Name: bibles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -496,6 +561,20 @@ ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAU
 
 
 --
+-- Name: bible_chapters id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_chapters ALTER COLUMN id SET DEFAULT nextval('public.bible_chapters_id_seq'::regclass);
+
+
+--
+-- Name: bible_verses id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_verses ALTER COLUMN id SET DEFAULT nextval('public.bible_verses_id_seq'::regclass);
+
+
+--
 -- Name: bibles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -595,6 +674,22 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: bible_chapters bible_chapters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_chapters
+    ADD CONSTRAINT bible_chapters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: bible_verses bible_verses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_verses
+    ADD CONSTRAINT bible_verses_pkey PRIMARY KEY (id);
 
 
 --
@@ -714,6 +809,20 @@ CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.ac
 
 
 --
+-- Name: index_bible_chapters_on_bible_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_bible_chapters_on_bible_id ON public.bible_chapters USING btree (bible_id);
+
+
+--
+-- Name: index_bible_verses_on_bible_chapter_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_bible_verses_on_bible_chapter_id ON public.bible_verses USING btree (bible_chapter_id);
+
+
+--
 -- Name: index_bibles_on_slug; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -827,11 +936,27 @@ ALTER TABLE ONLY public.data_stores
 
 
 --
+-- Name: bible_chapters fk_rails_3c14056029; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_chapters
+    ADD CONSTRAINT fk_rails_3c14056029 FOREIGN KEY (bible_id) REFERENCES public.bibles(id);
+
+
+--
 -- Name: plans fk_rails_45da853770; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.plans
     ADD CONSTRAINT fk_rails_45da853770 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: bible_verses fk_rails_66dc6e7a95; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bible_verses
+    ADD CONSTRAINT fk_rails_66dc6e7a95 FOREIGN KEY (bible_chapter_id) REFERENCES public.bible_chapters(id);
 
 
 --
@@ -943,6 +1068,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201231201343'),
 ('20210104173348'),
 ('20210107181018'),
-('20210110233738');
+('20210110233738'),
+('20210110234029'),
+('20210110234228');
 
 
