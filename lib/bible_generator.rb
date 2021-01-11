@@ -1,16 +1,9 @@
 module BibleGenerator
   def self.verses
-    raw_data = {
-      "resultset": {
-        "row": [
-          {"field": [1001001, 1, 1, 1, "In the beginning God created the heavens and the earth."]},
-          {"field": [1001002, 1, 1, 2, "And the earth was waste and void; and darkness was upon the face of the deep: and the Spirit of God moved upon the face of the waters."]},
-          {"field": [1001003, 1, 1, 3, "And God said, Let there be light: and there was light."]}
-        ],
-      }
-    }
-
-    raw_data[:resultset][:row]
+    file_path = "#{Rails.root}/lib/demo_bible.json"
+    file = File.read(file_path)
+    raw_data = JSON.parse(file)
+    raw_data["resultset"]["row"]
   end
 
   def self.run!(name:, abbreviation:)
@@ -21,7 +14,7 @@ module BibleGenerator
       )
 
       BibleGenerator.verses.each do |verse_object|
-        verse          = verse_object[:field]
+        verse          = verse_object["field"]
         book_position  = verse[1]
         chapter_number = verse[2]
         verse_number   = verse[3]
