@@ -1,6 +1,6 @@
 module BibleGenerator
   def self.verses
-    file_path = "#{Rails.root}/lib/demo_bible.json"
+    file_path = "#{Rails.root}/lib/asv.json"
     file = File.read(file_path)
     raw_data = JSON.parse(file)
     raw_data["resultset"]["row"]
