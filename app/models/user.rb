@@ -21,7 +21,7 @@ class User < ApplicationRecord
   }
 
   def username
-    if self.profile_slug
+    if !self.profile_slug.blank?
       self.profile_slug
     else
       self.slug
