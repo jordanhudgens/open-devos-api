@@ -25,7 +25,7 @@ module OpenDevosApi
     config.load_defaults 5.2
     config.active_record.schema_format = :sql
     config.active_job.queue_adapter = :sidekiq
-    config.autoload_paths << "#{Rails.root}/lib"
+    config.eager_load_paths << Rails.root.join('lib')
     config.active_storage.variant_processor = :mini_magick
   end
 end
