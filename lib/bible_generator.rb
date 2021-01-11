@@ -1,11 +1,13 @@
 module BibleGenerator
   def self.verses
-    file_path = "#{Rails.root}/lib/asv.json"
+    file_path = "#{Rails.root}/lib/kjv_data.json"
     file = File.read(file_path)
     raw_data = JSON.parse(file)
     raw_data["resultset"]["row"]
   end
 
+  # BibleGenerator.run!(name: "King James Version", abbreviation: "KJV")
+  # BibleGenerator.run!(name: "Youngs Literal Version", abbreviation: "YLT")
   def self.run!(name:, abbreviation:)
     ActiveRecord::Base.transaction do
       bible = Bible.create!(
