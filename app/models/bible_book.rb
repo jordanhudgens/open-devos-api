@@ -4,7 +4,8 @@ class BibleBook < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  validates_presence_of :name, :position
+  validates_presence_of :name,
+                        :position
 
   has_many :bible_chapters, dependent: :destroy
 

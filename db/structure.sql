@@ -232,7 +232,8 @@ CREATE TABLE public.bibles (
     name character varying,
     slug character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    abbreviation character varying NOT NULL
 );
 
 
@@ -1135,6 +1136,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210110234029'),
 ('20210110234228'),
 ('20210110234720'),
-('20210110234944');
+('20210110234944'),
+('20210111000919');
 
 
