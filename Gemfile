@@ -27,7 +27,7 @@ end
 gem 'knock', '~> 2.1', '>= 2.1.1'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'friendly_id', '~> 5.4', '>= 5.4.1'
-gem 'sidekiq', '~> 6.1', '>= 6.1.2'
+gem 'sidekiq', '~> 6.2'
 gem 'pundit', '~> 2.1'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'api-pagination', '~> 4.8', '>= 4.8.2'
