@@ -5,7 +5,7 @@ ruby '3.0.0'
 
 gem 'rails', '~> 6.1'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 5.1', '>= 5.1.1'
+gem 'puma', '~> 5.5'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "nokogiri", ">= 1.11.0.rc4"
