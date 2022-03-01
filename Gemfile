@@ -38,5 +38,5 @@ gem 'dead_end', '~> 1.0', '>= 1.0.1'
 gem 'ranked-model', '~> 0.4.6'
 gem 'active_storage_validations', '~> 0.9.0'
 gem 'mini_magick', '~> 4.11'
-gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'image_processing', '~> 1.12'
 
